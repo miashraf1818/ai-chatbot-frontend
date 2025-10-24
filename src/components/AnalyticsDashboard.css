@@ -1,0 +1,335 @@
+/* ============================================
+   PROFESSIONAL ANALYTICS DASHBOARD - 2025
+============================================ */
+
+.analytics-dashboard {
+    margin: 16px 20px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+  }
+  
+  /* Custom Professional Scrollbar */
+  .analytics-dashboard::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .analytics-dashboard::-webkit-scrollbar-track {
+    background: rgba(35, 43, 69, 0.3);
+    border-radius: 10px;
+  }
+  
+  .analytics-dashboard::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+  
+  .analytics-dashboard::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+  }
+  
+  /* Toggle Charts Button */
+  .toggle-charts-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--gradient-surface);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: var(--blur-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .toggle-charts-btn:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.15));
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+  
+  .toggle-charts-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Charts Container */
+  .charts-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Chart Card */
+  .chart-card {
+    background: rgba(35, 43, 69, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: var(--blur-glass);
+    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .chart-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Chart Title */
+  .chart-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Intent Legend */
+  .intent-legend {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .intent-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(35, 43, 69, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 13px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .intent-item:hover {
+    background: rgba(35, 43, 69, 0.7);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateX(4px);
+  }
+  
+  .intent-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .intent-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    flex: 1;
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+  
+  .intent-count {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 8px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 6px;
+  }
+  
+  .intent-confidence {
+    color: var(--success);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 8px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+  }
+  
+  /* Loading State */
+  .analytics-loading {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .loading-spinner {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    animation: pulse 1.5s infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .loading-spinner::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(99, 102, 241, 0.2);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  /* Empty State */
+  .analytics-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+  }
+  
+  .analytics-empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+  
+  .analytics-empty-text {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .analytics-dashboard {
+      margin: 12px 16px;
+      max-height: 500px;
+    }
+  
+    .chart-card {
+      padding: 16px;
+    }
+  
+    .chart-title {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+  
+    .intent-item {
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px;
+    }
+  
+    .toggle-charts-btn {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+  
+    .intent-name {
+      font-size: 13px;
+    }
+  
+    .intent-count,
+    .intent-confidence {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .analytics-dashboard {
+      margin: 8px 12px;
+    }
+  
+    .chart-card {
+      padding: 12px;
+    }
+  
+    .intent-item {
+      padding: 10px;
+    }
+  }
+  
+  /* Staggered Animation for Intent Items */
+  .intent-item:nth-child(1) { animation-delay: 0.1s; }
+  .intent-item:nth-child(2) { animation-delay: 0.15s; }
+  .intent-item:nth-child(3) { animation-delay: 0.2s; }
+  .intent-item:nth-child(4) { animation-delay: 0.25s; }
+  .intent-item:nth-child(5) { animation-delay: 0.3s; }
+  
+  .intent-item {
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Focus States for Accessibility */
+  .toggle-charts-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Chart Canvas Container */
+  .chart-canvas-container {
+    position: relative;
+    height: 300px;
+    margin-top: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-canvas-container {
+      height: 250px;
+    }
+  }
+  

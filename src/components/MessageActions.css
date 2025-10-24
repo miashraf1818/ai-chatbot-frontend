@@ -1,0 +1,211 @@
+/* ============================================
+   PROFESSIONAL MESSAGE ACTIONS - 2025
+   ChatGPT-Style Hover Menu
+============================================ */
+
+.message-actions-wrapper {
+    position: relative;
+  }
+  
+  /* Actions Container - Floating Toolbar */
+  .message-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 6px 8px;
+    background: rgba(27, 33, 57, 0.98);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    position: absolute;
+    top: -45px;
+    backdrop-filter: var(--blur-glass);
+    animation: fadeInDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+  }
+  
+  /* Position based on message type */
+  .bot-actions {
+    right: 0;
+  }
+  
+  .user-actions {
+    left: 0;
+  }
+  
+  /* Action Button - Professional Style */
+  .action-btn {
+    padding: 8px 12px;
+    background: rgba(35, 43, 69, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  .action-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px var(--accent-glow);
+  }
+  
+  .action-btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  /* Specific Button Colors */
+  .copy-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  }
+  
+  .thumbs-up-btn:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  }
+  
+  .thumbs-down-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  }
+  
+  .regenerate-btn:hover {
+    background: rgba(245, 158, 11, 0.2);
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+  }
+  
+  /* Active State (when clicked) */
+  .action-btn.active {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  
+  .thumbs-up-btn.active {
+    background: rgba(16, 185, 129, 0.3);
+    border-color: var(--success);
+    color: var(--success);
+  }
+  
+  .thumbs-down-btn.active {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: var(--error);
+    color: var(--error);
+  }
+  
+  /* Tooltip on Hover */
+  .action-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 14, 39, 0.95);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .action-btn:hover::after {
+    opacity: 1;
+  }
+  
+  /* Separator between buttons */
+  .action-separator {
+    width: 1px;
+    height: 20px;
+    background: var(--divider-color);
+    margin: 0 4px;
+  }
+  
+  /* Slide-in Animation */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Add subtle pulse for active feedback */
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    50% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  
+  .action-btn.clicked {
+    animation: pulse 0.5s ease-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .message-actions {
+      top: -42px;
+      gap: 4px;
+      padding: 5px 6px;
+    }
+  
+    .action-btn {
+      padding: 6px 10px;
+      font-size: 14px;
+      min-width: 32px;
+    }
+  
+    .action-btn::after {
+      display: none; /* Hide tooltips on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .message-actions {
+      top: -38px;
+      gap: 3px;
+      padding: 4px 5px;
+    }
+  
+    .action-btn {
+      padding: 5px 8px;
+      font-size: 13px;
+      min-width: 28px;
+    }
+  }
+  
+  /* Dark mode safe - ensure visibility */
+  .message-actions {
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.5),
+      0 0 0 1px var(--border-color),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Focus states for accessibility */
+  .action-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+  

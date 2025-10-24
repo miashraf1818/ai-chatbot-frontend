@@ -1,0 +1,391 @@
+/* ============================================
+   ADMIN DASHBOARD - Professional Design
+============================================ */
+
+.admin-dashboard {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    color: white;
+    padding-bottom: 40px;
+  }
+  
+  /* Header */
+  .admin-header {
+    background: rgba(27, 33, 57, 0.95);
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .admin-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+  }
+  
+  .admin-nav {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .admin-nav button {
+    padding: 10px 20px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .admin-nav button:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    transform: translateY(-2px);
+  }
+  
+  .admin-nav button.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  }
+  
+  /* Dashboard View */
+  .dashboard-view {
+    padding: 40px;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .stat-card {
+    background: rgba(35, 43, 69, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .stat-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+  }
+  
+  .stat-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
+  }
+  
+  .stat-content {
+    flex: 1;
+  }
+  
+  .stat-value {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  
+  /* Users View */
+  .users-view {
+    padding: 40px;
+  }
+  
+  .users-header {
+    margin-bottom: 24px;
+  }
+  
+  .users-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+  }
+  
+  /* Users Table */
+  .users-table {
+    background: rgba(35, 43, 69, 0.6);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    overflow-x: auto;
+  }
+  
+  .users-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .users-table thead tr {
+    background: rgba(99, 102, 241, 0.1);
+    border-bottom: 2px solid #6366f1;
+  }
+  
+  .users-table th {
+    padding: 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .users-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+  }
+  
+  .users-table tbody tr {
+    transition: all 0.3s;
+  }
+  
+  .users-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.1);
+  }
+  
+  .username-link {
+    background: none;
+    border: none;
+    color: #6366f1;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+  
+  .username-link:hover {
+    color: #8b5cf6;
+  }
+  
+  /* Status Badge */
+  .status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-badge.active {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  
+  .status-badge.inactive {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+  
+  /* Action Buttons */
+  .action-btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    margin-right: 8px;
+  }
+  
+  .ban-btn {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  
+  .ban-btn:hover {
+    background: rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .delete-btn {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+  
+  .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* User Detail View */
+  .user-detail-view {
+    padding: 40px;
+  }
+  
+  .back-btn {
+    padding: 10px 20px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+  }
+  
+  .back-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateX(-4px);
+  }
+  
+  .user-detail-header h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .info-card {
+    background: rgba(35, 43, 69, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  .info-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #6366f1;
+  }
+  
+  .info-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .info-card strong {
+    color: white;
+    margin-right: 8px;
+  }
+  
+  /* Conversations List */
+  .conversations-list {
+    background: rgba(35, 43, 69, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  .conversations-list h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #6366f1;
+  }
+  
+  .conversation-item {
+    padding: 12px;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .conversation-item strong {
+    color: white;
+  }
+  
+  .conversation-item span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+  }
+  
+  /* Loading */
+  .admin-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .admin-header {
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+  
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .users-table {
+      overflow-x: scroll;
+    }
+  }
+  
+/* Fix Admin Dashboard Layout */
+.admin-dashboard {
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;  /* Allow scrolling */
+    padding: 0;
+    position: relative;
+  }
+  
+  .admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(27, 33, 57, 0.95);
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
