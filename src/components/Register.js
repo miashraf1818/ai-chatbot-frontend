@@ -206,7 +206,7 @@ function Register({ onSwitchToLogin, onSuccess }) {
             onError={() => setErrors({ general: ['Google signup failed'] })}
             theme="filled_black"
             size="large"
-            width="100%"
+            width="300%"
           />
         </div>
 

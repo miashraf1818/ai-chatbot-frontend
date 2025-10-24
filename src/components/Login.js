@@ -94,7 +94,7 @@ function Login({ onSwitchToRegister, onSuccess }) {
             onError={() => setError('Google login failed')}
             theme="filled_black"
             size="large"
-            width="100%"
+            width="300%"
           />
         </div>
 
