@@ -16,7 +16,10 @@ import AdminDashboard from './pages/AdminDashboard';
 import LandingPage from './pages/LandingPage';  // 🆕 NEW
 
 
-const API_URL = 'http://localhost:8000/api/chatbot';
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/chatbot`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api/chatbot';
+
 
 
 function ChatApp() {

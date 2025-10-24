@@ -9,7 +9,11 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
 //   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  const API_URL = process.env.REACT_APP_API_URL || 
+(process.env.NODE_ENV === 'production' 
+  ? 'https://ai-chatbot-api-9kb0.onrender.com/api' 
+  : 'http://localhost:8000/api');
+ 
 
   // Configure axios defaults
   useEffect(() => {

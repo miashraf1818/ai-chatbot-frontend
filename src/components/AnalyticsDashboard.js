@@ -6,7 +6,10 @@ import {
 } from 'recharts';
 import './AnalyticsDashboard.css';
 
-const API_URL = 'http://localhost:8000/api/analytics';
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/analytics`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api/analytics';
+  
 const COLORS = ['#8a49ff', '#ff4db8', '#4dffb8', '#ffb84d', '#ff4d77'];
 
 function AnalyticsDashboard() {
