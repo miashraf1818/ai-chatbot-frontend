@@ -332,4 +332,62 @@
       height: 250px;
     }
   }
+
+  /* Mobile Responsive - Analytics */
+@media (max-width: 768px) {
+    .analytics-dashboard {
+      padding: 10px;
+    }
+  
+    .toggle-charts-btn {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px;
+      font-size: 14px;
+    }
+  
+    .charts-container {
+      gap: 15px;
+    }
+  
+    .chart-card {
+      padding: 15px;
+    }
+  
+    .chart-title {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  
+    /* Make charts responsive */
+    .chart-card {
+      min-height: 300px;
+    }
+  
+    /* Intent legend stacks on mobile */
+    .intent-legend {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .intent-item {
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chart-title {
+      font-size: 14px;
+    }
+  
+    .chart-card {
+      min-height: 250px;
+    }
+  
+    .intent-item {
+      font-size: 11px;
+    }
+  }
+  
   

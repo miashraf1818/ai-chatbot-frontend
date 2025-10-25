@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AdminDashboard.css';
 
-const API_URL = 'http://localhost:8000/api/chatbot';
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api';
 
 function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState('dashboard'); // dashboard, users, user-detail
+  const [view, setView] = useState('dashboard');
 
   // Fetch dashboard stats
   const fetchDashboardStats = async () => {
     try {
-      const token = localStorage.getItem('access_token');  // ✅ FIXED
-      const response = await axios.get(`${API_URL}/api/admin/dashboard/`, {
+      const token = localStorage.getItem('access_token');
+      const response = await axios.get(`${API_URL}/c_admin/dashboard/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);
@@ -27,8 +29,8 @@ function AdminDashboard() {
   // Fetch all users
   const fetchUsers = async () => {
     try {
-      const token = localStorage.getItem('access_token');  // ✅ FIXED
-      const response = await axios.get(`${API_URL}/api/admin/users/`, {
+      const token = localStorage.getItem('access_token');
+      const response = await axios.get(`${API_URL}/c_admin/users/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data.users);
@@ -40,8 +42,8 @@ function AdminDashboard() {
   // Fetch user details
   const fetchUserDetail = async (userId) => {
     try {
-      const token = localStorage.getItem('access_token');  // ✅ FIXED
-      const response = await axios.get(`${API_URL}/api/admin/users/${userId}/`, {
+      const token = localStorage.getItem('access_token');
+      const response = await axios.get(`${API_URL}/c_admin/users/${userId}/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSelectedUser(response.data);
@@ -54,8 +56,8 @@ function AdminDashboard() {
   // Ban/Unban user
   const toggleUserStatus = async (userId) => {
     try {
-      const token = localStorage.getItem('access_token');  // ✅ FIXED
-      await axios.post(`${API_URL}/api/admin/users/${userId}/toggle/`, {}, {
+      const token = localStorage.getItem('access_token');
+      await axios.post(`${API_URL}/c_admin/users/${userId}/toggle/`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();
@@ -70,8 +72,8 @@ function AdminDashboard() {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     
     try {
-      const token = localStorage.getItem('access_token');  // ✅ FIXED
-      await axios.delete(`${API_URL}/api/admin/users/${userId}/delete/`, {
+      const token = localStorage.getItem('access_token');
+      await axios.delete(`${API_URL}/c_admin/users/${userId}/delete/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();

@@ -389,3 +389,74 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
   
+  /* Mobile Responsive - Admin Dashboard */
+@media (max-width: 768px) {
+    .admin-dashboard {
+      padding: 10px;
+    }
+  
+    .admin-header {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+    }
+  
+    .admin-header h1 {
+      font-size: 20px;
+    }
+  
+    .admin-nav {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    .admin-nav button {
+      width: 100%;
+      padding: 12px;
+    }
+  
+    .stats-grid {
+      grid-template-columns: 1fr !important;
+      gap: 15px;
+    }
+  
+    .stat-card {
+      padding: 15px;
+    }
+  
+    /* Tables scroll horizontally on mobile */
+    .users-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .users-table table {
+      min-width: 600px;
+    }
+  
+    .action-btn {
+      font-size: 11px;
+      padding: 6px 10px;
+      margin: 2px;
+    }
+  
+    /* User detail cards stack on mobile */
+    .user-info-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-header h1 {
+      font-size: 18px;
+    }
+  
+    .stat-value {
+      font-size: 24px;
+    }
+  
+    .stat-label {
+      font-size: 12px;
+    }
+  }
+  
