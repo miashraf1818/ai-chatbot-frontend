@@ -1,22 +1,68 @@
-/* ========== ULTRA COMPACT STATS HEADER ========== */
-
-.stats-header {
+/* ========== STATS WRAPPER ========== */
+.stats-wrapper {
+    position: relative;
+  }
+  
+  /* ========== TOGGLE BUTTON (MOBILE ONLY) ========== */
+  .stats-toggle-btn {
+    display: none; /* Hidden on desktop */
+    position: sticky;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 6px 12px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 0;
+    color: #6366f1;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    width: 100%;
+  }
+  
+  .stats-toggle-btn:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: rgba(99, 102, 241, 0.5);
+  }
+  
+  .stats-toggle-btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* ========== STATS HEADER ========== */
+  .stats-header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 8px;  /* SUPER small gap */
-    padding: 8px 16px;  /* SUPER small padding */
+    gap: 8px;
+    padding: 8px 16px;
     background: rgba(35, 43, 69, 0.5);
     backdrop-filter: var(--blur-glass);
     border-bottom: 1px solid var(--divider-color);
     box-shadow: inset 0 -1px 0 rgba(99, 102, 241, 0.1);
+    transition: all 0.3s ease;
+    max-height: 500px;
+    overflow: hidden;
+  }
+  
+  /* Hidden state */
+  .stats-header.hidden {
+    max-height: 0 !important;
+    padding: 0 16px !important;
+    border-bottom: none !important;
+    opacity: 0;
   }
   
   /* Ultra Compact Stat Card */
   .stat-card {
     display: flex;
     align-items: center;
-    gap: 8px;  /* SMALLER gap */
-    padding: 8px 10px;  /* SMALLER padding */
+    gap: 8px;
+    padding: 8px 10px;
     background: rgba(35, 43, 69, 0.6);
     border: 1px solid var(--border-color);
     border-radius: 10px;
@@ -33,9 +79,8 @@
     box-shadow: 0 6px 20px var(--accent-glow);
   }
   
-  /* TINY Icons */
   .stat-icon {
-    font-size: 20px !important;  /* FORCED tiny */
+    font-size: 20px !important;
     filter: drop-shadow(0 0 8px var(--accent-glow));
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
@@ -51,9 +96,8 @@
     min-width: 0;
   }
   
-  /* SMALLER Values */
   .stat-value {
-    font-size: 18px !important;  /* FORCED small */
+    font-size: 18px !important;
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1;
@@ -65,9 +109,8 @@
     letter-spacing: -0.5px;
   }
   
-  /* TINY Labels */
   .stat-label {
-    font-size: 8px !important;  /* FORCED tiny */
+    font-size: 8px !important;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -76,9 +119,8 @@
     display: block;
   }
   
-  /* MICRO Change Badge */
   .stat-change {
-    font-size: 7px !important;  /* FORCED micro */
+    font-size: 7px !important;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -104,15 +146,14 @@
     background: rgba(100, 116, 139, 0.15);
   }
   
-  /* MICRO Subtext */
   .stat-subtext {
-    font-size: 7px !important;  /* FORCED micro */
+    font-size: 7px !important;
     color: var(--text-muted);
     margin-top: 1px;
     font-weight: 500;
   }
   
-  /* Staggered Animation on Load */
+  /* Animations */
   .stat-card {
     animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
   }
@@ -133,7 +174,7 @@
     }
   }
   
-  /* Different Icon Colors */
+  /* Icon Colors */
   .stat-card:nth-child(1) .stat-icon {
     filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
   }
@@ -150,51 +191,114 @@
     filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
   }
   
-  /* Responsive Design */
+  /* ========== RESPONSIVE DESIGN ========== */
+  
   @media (max-width: 1024px) {
     .stats-header {
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      padding: 8px 16px;
     }
   }
   
+  /* ========== MOBILE - SHOW TOGGLE BUTTON ========== */
   @media (max-width: 768px) {
+    /* Show toggle button on mobile */
+    .stats-toggle-btn {
+      display: block !important;
+    }
+  
     .stats-header {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-      padding: 6px 12px;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 4px !important;
+      padding: 5px 10px !important;
+      max-height: 80px !important;
     }
   
     .stat-card {
-      padding: 6px 8px;
-      gap: 6px;
+      padding: 4px 6px !important;
+      gap: 4px !important;
+      border-radius: 8px;
     }
   
     .stat-icon {
-      font-size: 18px !important;
+      font-size: 14px !important;
     }
   
     .stat-value {
-      font-size: 16px !important;
+      font-size: 14px !important;
     }
   
     .stat-label {
-      font-size: 7px !important;
+      font-size: 6px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    .stat-change {
+      font-size: 6px !important;
+      padding: 1px 2px !important;
+    }
+  
+    .stat-subtext {
+      display: none !important;
     }
   }
   
   @media (max-width: 480px) {
     .stats-header {
-      grid-template-columns: 1fr;
-      gap: 6px;
-      padding: 6px 10px;
+      gap: 3px !important;
+      padding: 4px 8px !important;
+      max-height: 70px !important;
+    }
+  
+    .stat-card {
+      padding: 3px 5px !important;
+      gap: 3px !important;
+    }
+  
+    .stat-icon {
+      font-size: 12px !important;
+    }
+  
+    .stat-value {
+      font-size: 12px !important;
+    }
+  
+    .stat-label {
+      font-size: 5.5px !important;
+    }
+  
+    .stat-change {
+      display: none !important;
     }
   }
   
-  /* Focus States for Accessibility */
+  @media (max-width: 360px) {
+    .stats-header {
+      max-height: 65px !important;
+      padding: 3px 6px !important;
+    }
+  
+    .stat-card {
+      padding: 2px 4px !important;
+    }
+  
+    .stat-icon {
+      font-size: 11px !important;
+    }
+  
+    .stat-value {
+      font-size: 11px !important;
+    }
+  
+    .stat-label {
+      font-size: 5px !important;
+    }
+  }
+  
   .stat-card:focus-visible {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
     border-color: var(--accent-primary);
   }
+  
