@@ -14,6 +14,7 @@
   --gradient-surface: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
   --gradient-bg: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
                  radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  --gradient-secondary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%); /* Added for markdown 'strong' */
   
   /* Text Colors - High Contrast */
   --text-primary: #F8FAFC;
@@ -343,16 +344,7 @@ body {
   font-size: 15px;
 }
 
-.message-meta {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--divider-color);
-  font-size: 11px;
-  color: var(--text-muted);
-  opacity: 1; /* Override old opacity */
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
+/* .message-meta removed - styles are now in MessageContent.css */
 
 /* Update Input Area */
 .input-container {
@@ -541,15 +533,7 @@ button:active {
   transform: translateY(0px);
 }
 
-/* Stat cards entrance animation */
-.stat-card {
-  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
-.stat-card:nth-child(1) { animation-delay: 0.1s; }
-.stat-card:nth-child(2) { animation-delay: 0.2s; }
-.stat-card:nth-child(3) { animation-delay: 0.3s; }
-.stat-card:nth-child(4) { animation-delay: 0.4s; }
+/* .stat-card animations removed - styles are in StatsHeader.css */
 
 /* ========== ENHANCED WELCOME SCREEN ========== */
 
@@ -848,6 +832,13 @@ button:active {
   border: 1px solid rgba(138, 73, 255, 0.3) !important;
   backdrop-filter: blur(10px) !important;
 }
+
+/* ============================================
+   PROFESSIONAL SIDEBAR - (REMOVED)
+   Styles are now in components/ConversationSidebar.css
+============================================ */
+
+
 /* ========================================
    🔥 MOBILE RESPONSIVE FIXES
    ======================================== */
@@ -924,12 +915,8 @@ button:active {
     font-size: 14px;
     line-height: 1.5;
   }
-
-  .message-meta {
-    font-size: 10px;
-    margin-top: 6px;
-    padding-top: 6px;
-  }
+  
+  /* .message-meta responsive styles removed */
 
   /* Input area stacks on mobile */
   .input-container {
@@ -1009,6 +996,8 @@ button:active {
     width: 6px;
     height: 6px;
   }
+
+  /* Sidebar Responsive Styles (REMOVED) */
 }
 
 /* Extra small devices (phones in portrait, < 480px) */
@@ -1163,3 +1152,9 @@ button {
     min-width: 44px;
   }
 }
+
+
+/* ============================================
+   MARKDOWN & MESSAGE CONTENT STYLES (REMOVED)
+   Styles are now in components/MessageContent.css
+============================================ */

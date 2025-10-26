@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './StatsHeader.css';
 
-const API_URL = 'http://localhost:8000/api/analytics';
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/analytics`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api/analytics';
+
 
 function StatsHeader() {
   const [stats, setStats] = useState(null);
@@ -20,7 +23,8 @@ function StatsHeader() {
       const token = localStorage.getItem('access_token');
       if (!token) return;
 
-      const response = await axios.get('http://localhost:8000/api/analytics/dashboard/', {
+    //   const response = await axios.get('http://localhost:8000/api/analytics/dashboard/', {
+        const response = await axios.get(`${API_URL}/dashboard/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

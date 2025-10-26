@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ConversationSidebar.css';
 
-const API_URL = 'http://localhost:8000/api/chatbot';
+const API_URL = process.env.REACT_APP_API_URL 
+  ? `${process.env.REACT_APP_API_URL}/chatbot`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api/chatbot';
+
 
 function ConversationSidebar({ isOpen, onToggle, currentConversationId, onSelectConversation, onNewChat }) {
   const [conversations, setConversations] = useState([]);

@@ -1,8 +1,39 @@
-/* ============================================
-   PROFESSIONAL ANALYTICS DASHBOARD - 2025
-============================================ */
-
-.analytics-dashboard {
+:root {
+    /* ============================================
+       DEFAULT THEME & COLOR VARIABLES
+       - You can override these in your global CSS
+    ============================================ */
+  
+    /* Primary Accent Colors */
+    --accent-primary: #6366F1; /* Indigo 500 */
+    --accent-hover: #818CF8;   /* Indigo 400 */
+    --accent-glow: rgba(99, 102, 241, 0.5);
+  
+    /* Text Colors */
+    --text-primary: #F3F4F6;   /* Gray 100 */
+    --text-secondary: #9CA3AF; /* Gray 400 */
+    --text-muted: #6B7280;     /* Gray 500 */
+  
+    /* Status Colors */
+    --success: #10B981; /* Emerald 500 */
+  
+    /* Background & Surface Colors (Dark Theme) */
+    --border-color: rgba(148, 163, 184, 0.2); /* Slate 400 @ 20% */
+    --gradient-surface: linear-gradient(135deg, rgba(35, 43, 69, 0.5), rgba(35, 43, 69, 0.2));
+    --gradient-primary: linear-gradient(90deg, #6366F1, #A78BFA); /* Indigo to Purple */
+    
+    /* Effects */
+    --blur-glass: blur(12px);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* ============================================
+     PROFESSIONAL ANALYTICS DASHBOARD - 2025
+     (Refined for responsiveness)
+  ============================================ */
+  
+  .analytics-dashboard {
     margin: 16px 20px;
     max-height: 600px;
     overflow-y: auto;
@@ -61,11 +92,15 @@
     transform: translateY(0);
   }
   
-  /* Charts Container */
+  /* Charts Container - Desktop-first responsive grid */
   .charts-container {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 1fr;
+    /* This is the key for desktop responsiveness:
+      It creates as many columns as can fit, with a minimum
+      width of 350px each, and distributes extra space.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -91,6 +126,8 @@
     animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-md);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Added min-height for consistency in grid rows */
+    min-height: 300px; 
   }
   
   .chart-card:hover {
@@ -124,6 +161,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+  
+  /* Chart Canvas Container */
+  .chart-canvas-container {
+    position: relative;
+    height: 300px;
+    margin-top: 16px;
   }
   
   /* Intent Legend */
@@ -241,57 +285,6 @@
     font-weight: 500;
   }
   
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .analytics-dashboard {
-      margin: 12px 16px;
-      max-height: 500px;
-    }
-  
-    .chart-card {
-      padding: 16px;
-    }
-  
-    .chart-title {
-      font-size: 16px;
-      margin-bottom: 16px;
-    }
-  
-    .intent-item {
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px;
-    }
-  
-    .toggle-charts-btn {
-      padding: 12px 16px;
-      font-size: 14px;
-    }
-  
-    .intent-name {
-      font-size: 13px;
-    }
-  
-    .intent-count,
-    .intent-confidence {
-      font-size: 12px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .analytics-dashboard {
-      margin: 8px 12px;
-    }
-  
-    .chart-card {
-      padding: 12px;
-    }
-  
-    .intent-item {
-      padding: 10px;
-    }
-  }
-  
   /* Staggered Animation for Intent Items */
   .intent-item:nth-child(1) { animation-delay: 0.1s; }
   .intent-item:nth-child(2) { animation-delay: 0.15s; }
@@ -320,74 +313,84 @@
     outline-offset: 2px;
   }
   
-  /* Chart Canvas Container */
-  .chart-canvas-container {
-    position: relative;
-    height: 300px;
-    margin-top: 16px;
-  }
   
+  /* ============================================
+     CONSOLIDATED RESPONSIVE STYLES
+  ============================================ */
+  
+  /* Tablet and smaller devices */
   @media (max-width: 768px) {
-    .chart-canvas-container {
-      height: 250px;
-    }
-  }
-
-  /* Mobile Responsive - Analytics */
-@media (max-width: 768px) {
     .analytics-dashboard {
-      padding: 10px;
+      margin: 12px 16px;
+      padding: 10px; /* Use uniform padding */
+      max-height: 500px;
     }
   
     .toggle-charts-btn {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 12px;
+      padding: 12px 16px;
       font-size: 14px;
+      margin-bottom: 15px;
     }
   
     .charts-container {
+      /* Force single column on tablet/mobile */
+      grid-template-columns: 1fr;
       gap: 15px;
     }
   
     .chart-card {
-      padding: 15px;
+      padding: 16px;
+      min-height: 300px;
     }
   
     .chart-title {
       font-size: 16px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
+    }
+    
+    .chart-canvas-container {
+      height: 250px;
     }
   
-    /* Make charts responsive */
-    .chart-card {
-      min-height: 300px;
-    }
-  
-    /* Intent legend stacks on mobile */
     .intent-legend {
       flex-direction: column;
       gap: 10px;
     }
   
     .intent-item {
-      font-size: 12px;
       flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px;
+      font-size: 12px;
+    }
+  
+    .intent-name {
+      font-size: 13px;
+    }
+  
+    .intent-count,
+    .intent-confidence {
+      font-size: 12px;
     }
   }
   
+  /* Mobile devices */
   @media (max-width: 480px) {
+    .analytics-dashboard {
+      margin: 8px 12px;
+    }
+  
+    .chart-card {
+      padding: 12px;
+      min-height: 250px;
+    }
+  
     .chart-title {
       font-size: 14px;
     }
   
-    .chart-card {
-      min-height: 250px;
-    }
-  
     .intent-item {
+      padding: 10px;
       font-size: 11px;
     }
   }
-  
-  
