@@ -1,401 +1,346 @@
-:root {
-    /* ============================================
-       DEFAULT THEME & COLOR VARIABLES
-       - You can override these in your global CSS
-    ============================================ */
-  
-    /* Primary Accent Colors */
-    --accent-primary: #6366F1; /* Indigo 500 */
-    --accent-hover: #818CF8;   /* Indigo 400 */
-    --accent-glow: rgba(99, 102, 241, 0.5);
-  
-    /* Text Colors */
-    --text-primary: #F3F4F6;   /* Gray 100 */
-    --text-secondary: #9CA3AF; /* Gray 400 */
-    --text-muted: #6B7280;     /* Gray 500 */
-  
-    /* Status Colors */
-    --success: #10B981; /* Emerald 500 */
-  
-    /* Background & Surface Colors (Dark Theme) */
-    --bg-primary: #111827; /* Gray 900 - For Auth Page */
-    --gradient-bg: linear-gradient(180deg, #1F2937, #111827); /* Dark Gradient - For Auth Page */
-    --border-color: rgba(148, 163, 184, 0.2); /* Slate 400 @ 20% */
-    --gradient-surface: linear-gradient(135deg, rgba(35, 43, 69, 0.5), rgba(35, 43, 69, 0.2));
-    --gradient-primary: linear-gradient(90deg, #6366F1, #A78BFA); /* Indigo to Purple */
-    
-    /* Effects */
-    --blur-glass: blur(12px);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3); /* For Auth Box */
-  }
-  
-  
-  /* ============================================
-     PROFESSIONAL ANALYTICS DASHBOARD - 2025
-     (Refined for responsiveness)
-  ============================================ */
-  
-  .analytics-dashboard {
-    margin: 16px 20px;
-    max-height: 600px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 8px;
-  }
-  
-  /* Custom Professional Scrollbar */
-  .analytics-dashboard::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .analytics-dashboard::-webkit-scrollbar-track {
-    background: rgba(35, 43, 69, 0.3);
-    border-radius: 10px;
-  }
-  
-  .analytics-dashboard::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 10px;
-    transition: background 0.3s;
-  }
-  
-  .analytics-dashboard::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-hover);
-  }
-  
-  /* Toggle Charts Button */
-  .toggle-charts-btn {
+/* ============================================
+   PROFESSIONAL AUTH FORMS - Upgraded 2025
+============================================ */
+
+.auth-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 14px 20px;
-    background: var(--gradient-surface);
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-primary);
+    background-image: var(--gradient-bg);
+    z-index: 1000;
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .auth-box {
+    background: rgba(35, 43, 69, 0.6);
+    backdrop-filter: var(--blur-glass);
+    border-radius: 24px;
+    padding: 48px 40px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Gradient overlay for premium look */
+  .auth-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent);
+    pointer-events: none;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .auth-box h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 32px;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.5px;
+  }
+  
+  .auth-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .form-row input {
+    flex: 1;
+  }
+  
+  /* Professional Input Fields */
+  .auth-box input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(35, 43, 69, 0.5);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     color: var(--text-primary);
     font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .auth-box input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  
+  .auth-box input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(35, 43, 69, 0.7);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+    transform: translateY(-1px);
+  }
+  
+  .auth-box input:hover:not(:focus) {
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+  
+  /* Professional Button */
+  .auth-button {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: var(--blur-glass);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .toggle-charts-btn:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.15));
-    border-color: var(--accent-primary);
-    transform: translateY(-2px);
+    margin-top: 12px;
     box-shadow: 0 4px 20px var(--accent-glow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
   }
   
-  .toggle-charts-btn:active {
+  /* Button hover effect */
+  .auth-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .auth-button:hover:not(:disabled)::before {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .auth-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+  
+  .auth-button:active:not(:disabled) {
     transform: translateY(0);
   }
   
-  /* Charts Container - Desktop-first responsive grid */
-  .charts-container {
-    margin-top: 20px;
-    display: grid;
-    /* This is the key for desktop responsiveness:
-      It creates as many columns as can fit, with a minimum
-      width of 350px each, and distributes extra space.
-    */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
-    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  .auth-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
   }
   
-  @keyframes fadeInUp {
+  /* Switch between Login/Register */
+  .auth-switch {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .auth-switch span {
+    color: var(--accent-primary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  
+  .auth-switch span:hover {
+    color: var(--accent-hover);
+    background: rgba(99, 102, 241, 0.1);
+  }
+  
+  /* Professional Error Message */
+  .error-message {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #FCA5A5;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: shake 0.5s ease-out;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+  
+  /* Success Message */
+  .success-message {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #6EE7B7;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: slideUp 0.4s ease-out;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Loading State for Button */
+  .auth-button:disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .auth-box {
+      padding: 36px 28px;
+      max-width: 95%;
+    }
+    
+    .auth-box h2 {
+      font-size: 28px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .auth-button {
+      padding: 14px 20px;
+    }
+  }
+  
+  /* Accessibility - Focus Visible */
+  .auth-box input:focus-visible,
+  .auth-button:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+/* Error Messages */
+.error-message {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    animation: shake 0.5s;
+  }
+  
+  .input-error {
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.05) !important;
+  }
+  
+  .field-error {
+    display: block;
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 5px;
+    animation: fadeIn 0.3s;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+  
+  @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(-5px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
-  /* Chart Card */
-  .chart-card {
-    background: rgba(35, 43, 69, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 24px;
-    backdrop-filter: var(--blur-glass);
-    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-md);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Added min-height for consistency in grid rows */
-    min-height: 300px; 
-  }
-  
-  .chart-card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-  }
-  
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  /* Chart Title */
-  .chart-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 20px;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  /* Chart Canvas Container */
-  .chart-canvas-container {
-    position: relative;
-    height: 300px;
-    margin-top: 16px;
-  }
-  
-  /* Intent Legend */
-  .intent-legend {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .intent-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    background: rgba(35, 43, 69, 0.5);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    font-size: 13px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-  }
-  
-  .intent-item:hover {
-    background: rgba(35, 43, 69, 0.7);
-    border-color: rgba(99, 102, 241, 0.4);
-    transform: translateX(4px);
-  }
-  
-  .intent-color {
-    width: 18px;
-    height: 18px;
-    border-radius: 6px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .intent-name {
-    color: var(--text-primary);
-    font-weight: 600;
-    flex: 1;
-    text-transform: capitalize;
-    font-size: 14px;
-  }
-  
-  .intent-count {
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 4px 8px;
-    background: rgba(99, 102, 241, 0.1);
-    border-radius: 6px;
-  }
-  
-  .intent-confidence {
-    color: var(--success);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 8px;
-    background: rgba(16, 185, 129, 0.1);
-    border-radius: 6px;
-  }
-  
-  /* Loading State */
-  .analytics-loading {
-    padding: 60px 20px;
-    text-align: center;
-  }
-  
-  .loading-spinner {
-    color: var(--text-secondary);
-    font-size: 16px;
-    font-weight: 600;
-    animation: pulse 1.5s infinite;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .loading-spinner::before {
-    content: '';
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(99, 102, 241, 0.2);
-    border-top-color: var(--accent-primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
-  
-  /* Empty State */
-  .analytics-empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-  }
-  
-  .analytics-empty-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-    opacity: 0.5;
-  }
-  
-  .analytics-empty-text {
-    font-size: 15px;
-    font-weight: 500;
-  }
-  
-  /* Staggered Animation for Intent Items */
-  .intent-item:nth-child(1) { animation-delay: 0.1s; }
-  .intent-item:nth-child(2) { animation-delay: 0.15s; }
-  .intent-item:nth-child(3) { animation-delay: 0.2s; }
-  .intent-item:nth-child(4) { animation-delay: 0.25s; }
-  .intent-item:nth-child(5) { animation-delay: 0.3s; }
-  
-  .intent-item {
-    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-  }
-  
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  /* Focus States for Accessibility */
-  .toggle-charts-btn:focus-visible {
-    outline: 2px solid var(--accent-primary);
-    outline-offset: 2px;
-  }
-  
-  
-  /* ============================================
-     CONSOLIDATED RESPONSIVE STYLES
-  ============================================ */
-  
-  /* Tablet and smaller devices */
-  @media (max-width: 768px) {
-    .analytics-dashboard {
-      margin: 12px 16px;
-      padding: 10px; /* Use uniform padding */
-      max-height: 500px;
-    }
-  
-    .toggle-charts-btn {
-      padding: 12px 16px;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-  
-    .charts-container {
-      /* Force single column on tablet/mobile */
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-  
-    .chart-card {
-      padding: 16px;
-      min-height: 300px;
-    }
-  
-    .chart-title {
-      font-size: 16px;
-      margin-bottom: 16px;
-    }
-    
-    .chart-canvas-container {
-      height: 250px;
-    }
-  
-    .intent-legend {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .intent-item {
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px;
-      font-size: 12px;
-    }
-  
-    .intent-name {
-      font-size: 13px;
-    }
-  
-    .intent-count,
-    .intent-confidence {
-      font-size: 12px;
-    }
-  }
-  
-  /* Mobile devices */
-  @media (max-width: 480px) {
-    .analytics-dashboard {
-      margin: 8px 12px;
-    }
-  
-    .chart-card {
-      padding: 12px;
-      min-height: 250px;
-    }
-  
-    .chart-title {
-      font-size: 14px;
-    }
-  
-    .intent-item {
-      padding: 10px;
-      font-size: 11px;
-    }
-  }
-  
-  
+
