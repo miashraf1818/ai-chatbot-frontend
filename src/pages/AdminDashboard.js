@@ -3,8 +3,8 @@ import axios from 'axios';
 import './AdminDashboard.css';
 
 const API_URL = process.env.REACT_APP_API_URL 
-  ? `${process.env.REACT_APP_API_URL}`
-  : 'https://ai-chatbot-api-9kb0.onrender.com/api';
+  ? `${process.env.REACT_APP_API_URL}/chatbot/admin`
+  : 'https://ai-chatbot-api-9kb0.onrender.com/api/chatbot/admin';
 
 function AdminDashboard() {
   const [stats, setStats] = useState(null);
@@ -17,7 +17,7 @@ function AdminDashboard() {
   const fetchDashboardStats = async () => {
     try {
       const token = localStorage.getItem('access_token');
-      const response = await axios.get(`${API_URL}/c_admin/dashboard/`, {
+      const response = await axios.get(`${API_URL}/dashboard/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);
@@ -30,7 +30,7 @@ function AdminDashboard() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('access_token');
-      const response = await axios.get(`${API_URL}/c_admin/users/`, {
+      const response = await axios.get(`${API_URL}/users/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data.users);
@@ -43,7 +43,7 @@ function AdminDashboard() {
   const fetchUserDetail = async (userId) => {
     try {
       const token = localStorage.getItem('access_token');
-      const response = await axios.get(`${API_URL}/c_admin/users/${userId}/`, {
+      const response = await axios.get(`${API_URL}/users/${userId}/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSelectedUser(response.data);
@@ -57,7 +57,7 @@ function AdminDashboard() {
   const toggleUserStatus = async (userId) => {
     try {
       const token = localStorage.getItem('access_token');
-      await axios.post(`${API_URL}/c_admin/users/${userId}/toggle/`, {}, {
+      await axios.post(`${API_URL}/users/${userId}/toggle/`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();
@@ -73,7 +73,7 @@ function AdminDashboard() {
     
     try {
       const token = localStorage.getItem('access_token');
-      await axios.delete(`${API_URL}/c_admin/users/${userId}/delete/`, {
+      await axios.delete(`${API_URL}/users/${userId}/delete/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();
